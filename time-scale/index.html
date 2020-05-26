@@ -106,12 +106,13 @@ function time_chart(){
         //.orient('bottom')
         // .ticks(d3.time.hours, 2)
         .tickFormat(d3.timeFormat('%H:%M'))
-        .tickSize(0)
+        .tickSize(-height - 6)
         .tickPadding(8);
     
     var yAxis = d3.axisRight(y)
         //.scale(y)
         //.orient('left')
+        .tickSize(7+width)
         .tickPadding(8)
         .tickFormat(function (d) {
         return '';
@@ -123,7 +124,8 @@ function time_chart(){
         .attr('height', height)
         .append('g')
         .attr('transform', 'translate(' + margin.left + ', ' + margin.top + ')');
-    
+
+        
     svg.selectAll('.chart')
         .data(data)
         .enter().append('rect')
@@ -140,6 +142,8 @@ function time_chart(){
         });
     
     svg.append('g')
+        //.attr("class", "grid")
+
         .attr('class', 'x axis')
         .attr('transform', 'translate(0, ' + (height - margin.top - margin.bottom) + ')')
         .call(xAxis);
@@ -154,12 +158,22 @@ function time_chart(){
         .style("text-anchor", "middle")
         .text("Off");
     
-    svg.append("text")
-        .attr("x", -25) .text("On");
-}
+        svg.append("text")
+        .attr("x", -25)
         .attr("y", 220)
         .style("text-anchor", "middle")
+        .text("On");
+
+/*        d3.selectAll('g.x-axis g.tick')
+    .append('line')
+        .classed('grid-line',true)
+        .attr('x1',0)//origin
+        .attr('y1',0)
+        .attr('x2',0)//destination
+        .attr('y2', -(height -2*margin));
+*/
+   
+    }
+        
        
 </script>
-
-
