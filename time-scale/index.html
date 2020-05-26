@@ -6,7 +6,7 @@
   </head>
   
     <body>
-        <h1>Time Seris</h1>
+        <h1>Time Series</h1>
         <input type="button" name="click" onclick="time_chart()" value="Click">
         
     </body>
@@ -155,11 +155,11 @@ function time_chart(){
         .text("Off");
     
     svg.append("text")
-        .attr("x", -25)
+        .attr("x", -25) .text("On");
+}
         .attr("y", 220)
         .style("text-anchor", "middle")
-        .text("On");
-}
+       
 </script>
 
 
